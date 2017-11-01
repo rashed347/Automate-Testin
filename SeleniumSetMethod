@@ -1,0 +1,137 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
+
+namespace nextAutomation
+{
+    class SeleniumSetMethod
+    {
+        public static void EnterText(By elementType, String value)
+        {
+           
+               PropertiesCollection.driver.FindElement(elementType).SendKeys(value);
+                
+        }
+
+        public static void clickOn(IWebElement element)
+        {
+
+              element.Click();
+                
+        }
+
+        public static void SelectDropdownValue(By elementType, string value)
+        {
+  
+            new SelectElement(PropertiesCollection.driver.FindElement(elementType)).SelectByValue(value);
+        }
+
+        public static void CheckDisabledSaveBtn()
+        {
+            IWebElement SaveBtn = PropertiesCollection.driver.FindElement(By.CssSelector(".btn.btn-success"));
+
+            if (SaveBtn.Enabled)
+            {
+                Console.WriteLine(" Failed: Save Button is Active");
+                Console.WriteLine(" Expected: Save Button should be Inactive");
+
+            }
+
+            else
+            {
+                Console.WriteLine("Pass: Save Button is Inactive");
+            }
+        }
+
+        public static void CheckEnabledSaveBtnAndClickAfterFillup()
+        {
+            IWebElement SaveBtn = PropertiesCollection.driver.FindElement(By.CssSelector(".btn.btn-success"));
+
+            if (SaveBtn.Enabled)
+            {
+                Console.WriteLine(" Pass: Save Button is Active");
+                SaveBtn.Click();
+            }
+
+            else
+            {
+                Console.WriteLine("Failed: Save Button is Inactive");
+            }
+        }
+
+        public static void CheckDisabledReseTBtn()
+        {
+            IWebElement ResetBtn = PropertiesCollection.driver.FindElement(By.CssSelector(".btn.btn-danger"));
+
+            if (ResetBtn.Enabled)
+            {
+                Console.WriteLine(" Failed: Reset Button is Active");
+                Console.WriteLine(" Expected: Reset Button should be Inactive");
+    
+            }
+
+            else
+            {
+                Console.WriteLine("Pass: Reset Button is Inactive");
+            }
+        }
+
+        public static void CheckEnabledResetBtnAndClickAfterFillup()
+        {
+            IWebElement ResetBtn = WaitFor.ElementToClickable(By.CssSelector(".btn.btn-danger"));
+
+            if (ResetBtn.Enabled)
+            {
+                Console.WriteLine(" Pass: ResetBtn Button is Active");
+                ResetBtn.Click();
+            }
+
+            else
+            {
+                Console.WriteLine("Failed: ResetBtn Button is Inactive");
+                Console.WriteLine(" Expected: Reset Button should be Active");
+            }
+        }
+
+        public static void CheckboxStateByDefault (IWebElement checkBox)
+    {
+        if (SeleniumGetMethod.IsCheckboxSelected(checkBox))
+            {
+                Console.WriteLine("Pass: Checkbox is selected by default");
+            }
+            else
+            {
+                Console.WriteLine("Failed: Checkbox is not selected by default");
+                Console.WriteLine("Expected: Checkbox should be selected by default");
+            }
+    }
+
+        public static void ClickOnEditNextToNewEntryAfterCheckGrid(string commonRowId, int numberOfColumn, int numberOfDataColumn, string[] inputValues)
+        {
+            int desiredRow = SeleniumGetMethod.CheckGridAndGetDesiredRow(commonRowId, numberOfDataColumn, inputValues);
+
+            String cellId = commonRowId + "[" + desiredRow + "]/td[" + numberOfColumn + "]/ul/li[1]/a/i";
+
+            IWebElement editIcon = PropertiesCollection.driver.FindElement(By.XPath(cellId));
+            editIcon.Click();
+        }
+
+        public static void ClickOnDeleteNextToNewEntry(string commonRowId, int desiredRow, int numberOfColumn)
+        {
+            String cellId = commonRowId + "[" + desiredRow + "]/td[" + numberOfColumn + "]/ul/li[2]/a/i";
+
+            IWebElement deleteIcon = PropertiesCollection.driver.FindElement(By.XPath(cellId));
+            deleteIcon.Click();
+        }
+        
+
+
+    }
+
+}
