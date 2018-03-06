@@ -1,0 +1,6 @@
+c:\users\sonia momin\documents\visual studio 2012\Projects\PracticeProject\PracticeProject\bin\Debug\PracticeProject.exe.config
+c:\users\sonia momin\documents\visual studio 2012\Projects\PracticeProject\PracticeProject\obj\Debug\PracticeProject.csprojResolveAssemblyReference.cache
+c:\users\sonia momin\documents\visual studio 2012\Projects\PracticeProject\PracticeProject\bin\Debug\PracticeProject.exe
+c:\users\sonia momin\documents\visual studio 2012\Projects\PracticeProject\PracticeProject\bin\Debug\PracticeProject.pdb
+c:\users\sonia momin\documents\visual studio 2012\Projects\PracticeProject\PracticeProject\obj\Debug\PracticeProject.exe
+c:\users\sonia momin\documents\visual studio 2012\Projects\PracticeProject\PracticeProject\obj\Debug\PracticeProject.pdb
