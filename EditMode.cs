@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using OpenQA.Selenium;
+
+namespace nextAutomation
+{
+    class EditMode
+    {
+        public static void CheckDefaultFieldsValue(IList<IWebElement> myFields, string[] inputValues)
+    {
+        int i = 0;
+            foreach (var field in myFields)
+        {
+            
+            if (field.GetAttribute("value") == inputValues[i])
+            {
+                
+                Console.WriteLine("Pass: Correct Value is Showing");
+                i = i +1;
+            }
+            else
+            {
+                Console.WriteLine("Failed: Wrong value is showing");
+                i++;
+            }
+
+        }
+    }
+
+        public static void CheckCheckBoxState(IWebElement checkBox, string inputValues)
+        {
+            
+            if (GetMethod.CheckBoxState(checkBox) == inputValues)
+            {
+                Console.WriteLine("Pass: CheckBox is OK");
+            }
+            else
+            {
+                Console.WriteLine("Failed: Checkbox is not ok");
+            }
+        }
+    }
+}
